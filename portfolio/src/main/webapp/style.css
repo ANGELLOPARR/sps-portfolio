@@ -1,9 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
 #content {
   margin-left: auto;
   margin-right: auto;
   width: 650px;
+  font-family: 'Noto Sans', sans-serif;
 }
 
-#greeting-container {
+#fact-container {
   margin-top: 20px;
+}
+
+#pfp {
+    border-radius: 2%;
+    border: 2px solid black;
 }
