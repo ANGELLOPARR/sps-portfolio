@@ -3,9 +3,6 @@
   <head>
     <meta charset="UTF-8">
     <title>Angello's Portfolio</title>
-    <!-- Bootstrap CSS -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-
     <!-- My stylesheets -->
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
@@ -15,6 +12,9 @@
       <div class="nav-wrapper">
         <div class="nav-left">
           <div class="nav-link">
+            <a href="index.html">Home</a>
+          </div>
+          <div class="nav-link">
             <a href="about.html">About me</a>
           </div>
           <div class="nav-link">
@@ -23,26 +23,29 @@
         </div>
 
         <div class="nav-right">
-          <div id="nav-name">Angello Parrolivelli</div>
+          <div id="nav-name">
+            Angello Parrolivelli
+          </div>
         </div>
       </div>
 
       <div id="content">
         <div class="header">
           <h1 class="g-green">Hi there!</h1>
-          <h2>My name's Angello</h2>
+          <div id="intro">My name's <span class="g-blue">Angello</span>, and this is the portfolio I made in Google's SPS program!</div>
         </div>
+
+        <hr>
         
-        <img id="pfp" src="images/me.jpg" height="35%" width="35%"</img>
-        <p>Click here to get a random fun fact about me:</p>
-        <button class="btn btn-secondary" onclick="addRandomFunFact()">Hello</button>
-        <div id="fact-container"></div>
+        <div class="options">
+          <h2>You can read more about me <a class="g-yellow" href="about.html">here</a></h2>
+          <h2><a class="g-red" href="projects.html">This</a> is a page with my personal projects</h2>
+          <h2>OR, if you're feelin lucky, you can view a random piece of my professional life by clicking below</h2>
+          <button class="my-button" onclick="gotoRandomSite()">I'm feelin lucky</button>
+        </div>
+
       </div>
     </div>
 
-    <!-- Bootstrap scripts -->
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
   </body>
 </html>
