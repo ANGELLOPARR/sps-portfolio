@@ -3,18 +3,46 @@
   <head>
     <meta charset="UTF-8">
     <title>Angello's Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+
+    <!-- My stylesheets -->
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
   <body>
-    <div id="content">
-      <h1>Angello Parrolivelli</h1>
-      <p>Beep. Boop. Welcome to my portfolio.</p>
-      <p>My name is Angello Parrolivelli. I'm a third year computer science major at Cal Poly, San Luis Obispo! I enjoy writing code, surfing, and watching movies with friends!</p>
-      <img id="pfp" src="images/me.jpg" height="40%" width="40%"</img>
-      <p>Click here to get a random fun fact about me:</p>
-      <button onclick="addRandomFunFact()">Hello</button>
-      <div id="fact-container"></div>
+    <div class="container">
+      <div class="nav-wrapper">
+        <div class="nav-left">
+          <div class="nav-link">
+            <a href="about.html">About me</a>
+          </div>
+          <div class="nav-link">
+            <a href="projects.html">Projects</a>
+          </div>
+        </div>
+
+        <div class="nav-right">
+          <div id="nav-name">Angello Parrolivelli</div>
+        </div>
+      </div>
+
+      <div id="content">
+        <div class="header">
+          <h1 class="g-green">Hi there!</h1>
+          <h2>My name's Angello</h2>
+        </div>
+        
+        <img id="pfp" src="images/me.jpg" height="35%" width="35%"</img>
+        <p>Click here to get a random fun fact about me:</p>
+        <button class="btn btn-secondary" onclick="addRandomFunFact()">Hello</button>
+        <div id="fact-container"></div>
+      </div>
     </div>
+
+    <!-- Bootstrap scripts -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
   </body>
 </html>

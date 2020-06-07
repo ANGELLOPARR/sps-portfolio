@@ -1,10 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
+body {
+    margin: 0;
+}
+
+h1 {
+    font-size: 3.5em;
+}
+
+h2 {
+    font-size: 2.5em;
+}
+
 #content {
   margin-left: auto;
   margin-right: auto;
   width: 650px;
-  font-family: 'Noto Sans', sans-serif;
+  margin-top: 5%;
 }
 
 #fact-container {
@@ -14,4 +26,54 @@
 #pfp {
     border-radius: 2%;
     border: 2px solid black;
+}
+
+.container {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 1% 4%;
+    background-color: #2d2d2d;
+}
+
+.nav-left {
+    display: flex;
+    letter-spacing: 1px;
+}
+
+.g-green {
+    color: #34a853;
+}
+
+.nav-link {
+    margin-right: 26px;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    height: 22px;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.4s;
+    padding-bottom: 2px;
+    padding-top: 4px;
+}
+
+.nav-link a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.4s;
+}
+
+.nav-link:hover {
+    border-bottom: 3px solid white;
+}
+
+#nav-name {
+    font-size: 1.4em;
+    color: white;
+}
+
+.header {
+    text-align: center;
 }
