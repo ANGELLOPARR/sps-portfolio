@@ -9,7 +9,7 @@
 
 a {
     text-decoration: none;
-    color: #4791ff;
+    color: var(--g-blue);
 }
 
 hr {
@@ -18,12 +18,6 @@ hr {
 
 body {
     margin: 0;
-}
-
-h1 {
-    font-size: 3.5em;
-    margin-top: 0%;
-    margin-bottom: 2%;
 }
 
 #intro {
@@ -76,19 +70,22 @@ h1 {
     letter-spacing: 1px;
 }
 
-.g-green {
-    color: #34a853;
+#greeting {
+    font-size: 3.5em;
+    margin-top: 0%;
+    margin-bottom: 2%;
+    color: var(--g-green);
 }
 
-.g-blue {
+#intro-name {
     color: #4285f4;
 }
 
-.g-red {
+#projects-link {
     color: #ea4335;
 }
 
-.g-yellow {
+#about-link {
     color: #fbbc05;
 }
 
@@ -106,7 +103,6 @@ h1 {
 .nav-link a {
     color: white;
     text-decoration: none;
-    transition: color 0.4s;
 }
 
 .nav-link:hover {
@@ -128,4 +124,9 @@ h1 {
 
 .options {
     text-align: center;
+}
+
+.option-item {
+    font-size: 1.4em;
+    font-weight: 600;
 }

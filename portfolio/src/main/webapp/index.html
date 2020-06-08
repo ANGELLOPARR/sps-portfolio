@@ -31,8 +31,8 @@
 
       <div id="content">
         <div class="header">
-          <h1 class="g-green">Hi there!</h1>
-          <div id="intro">My name's <span class="g-blue">Angello</span>,
+          <h1 id="greeting">Hi there!</h1>
+          <div id="intro">My name's <span id="intro-name">Angello</span>,
               and this is the portfolio I made in Google's SPS program!
           </div>
         </div>
@@ -40,11 +40,11 @@
         <hr>
         
         <div class="options">
-          <h2>You can read more about me <a class="g-yellow" href="about.html">here</a></h2>
-          <h2><a class="g-red" href="projects.html">This</a> is a page with my personal projects</h2>
-          <h2>OR, if you're feelin lucky, you can view a random piece of my professional
+          <p class="option-item">You can read more about me <a id="about-link" href="about.html">here</a></p>
+          <p class="option-item"><a id="projects-link" href="projects.html">This</a> is a page with my personal projects</p>
+          <p class="option-item">OR, if you're feelin lucky, you can view a random piece of my professional
               life by clicking below
-          </h2>
+          </p>
           <button class="my-button" onclick="gotoRandomSite()">I'm feelin lucky</button>
         </div>
 
