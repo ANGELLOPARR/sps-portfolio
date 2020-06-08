@@ -20,9 +20,8 @@ body {
     margin: 0;
 }
 
-#intro {
-    font-size: 2.2em;
-    margin-bottom: 5%;
+.container {
+    font-family: 'Noto Sans', sans-serif;
 }
 
 #content {
@@ -32,8 +31,9 @@ body {
   margin-top: 5%;
 }
 
-#fact-container {
-  margin-top: 20px;
+#intro {
+    font-size: 2.2em;
+    margin-bottom: 5%;
 }
 
 #pfp {
@@ -41,21 +41,17 @@ body {
     border: 2px solid black;
 }
 
-.my-button {
-    background-color: var(--g-green);
-    border-radius: 12px;
-    border: none;
-    color: white;
-    padding: 15px 32px;
+.header {
     text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: 600px;
 }
 
-.container {
-    font-family: 'Noto Sans', sans-serif;
+.options {
+    text-align: center;
+}
+
+.option-item {
+    font-size: 1.4em;
+    font-weight: 600;
 }
 
 .nav-wrapper {
@@ -68,25 +64,6 @@ body {
 .nav-left {
     display: flex;
     letter-spacing: 1px;
-}
-
-#greeting {
-    font-size: 3.5em;
-    margin-top: 0%;
-    margin-bottom: 2%;
-    color: var(--g-green);
-}
-
-#intro-name {
-    color: #4285f4;
-}
-
-#projects-link {
-    color: #ea4335;
-}
-
-#about-link {
-    color: #fbbc05;
 }
 
 .nav-link {
@@ -114,19 +91,34 @@ body {
     color: white;
 }
 
-#nav-name a {
+#greeting {
+    font-size: 3.5em;
+    margin-top: 0%;
+    margin-bottom: 2%;
+    color: var(--g-green);
+}
+
+#intro-name {
+    color: #4285f4;
+}
+
+#projects-link {
+    color: #ea4335;
+}
+
+#about-link {
+    color: #fbbc05;
+}
+
+.my-button {
+    background-color: var(--g-green);
+    border-radius: 12px;
+    border: none;
     color: white;
-}
-
-.header {
+    padding: 15px 32px;
     text-align: center;
-}
-
-.options {
-    text-align: center;
-}
-
-.option-item {
-    font-size: 1.4em;
-    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600px;
 }
