@@ -13,20 +13,22 @@
 // limitations under the License.
 
 /**
- * Adds a random greeting to the page.
+ * Navigates the user to a random site that is relevant
+ * to my professional life. This may include
+ * LinkedIn, a project repo, etc.
  */
-function addRandomFunFact() {
-  const funFacts =
+function gotoRandomSite() {
+  const sites =
       [
-          'I almost fell off of Upper Yosemite Falls!',
-          'I can make a mean (Peruvian) ceviche!',
-          'I have a dog named Jack that I love like a brother.',
-          'I surf!'];
+          'https://github.com/kevinMoreland/QuarCards',
+          'https://github.com/ANGELLOPARR',
+          'https://www.linkedin.com/in/angelloparr/',
+          'about.html',
+          'projects.html'];
 
-  // Pick a random greeting.
-  const fact = funFacts[Math.floor(Math.random() * funFacts.length)];
+  // Pick a random site to navigate to.
+  const site = sites[Math.floor(Math.random() * sites.length)];
 
-  // Add it to the page.
-  const factContainer = document.getElementById('fact-container');
-  factContainer.innerText = fact;
+  // Change current location to new site.
+  window.location.href = site;
 }
