@@ -2,17 +2,54 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <title>Angello's Portfolio</title>
+    <!-- My stylesheets -->
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
   <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
+    <div class="container">
+      <div class="nav-wrapper">
+        <div class="nav-left">
+          <div class="nav-link">
+            <a href="index.html">Home</a>
+          </div>
+          <div class="nav-link">
+            <a href="about.html">About me</a>
+          </div>
+          <div class="nav-link">
+            <a href="projects.html">Projects</a>
+          </div>
+        </div>
+
+        <div class="nav-right">
+          <div id="nav-name">
+            Angello Parrolivelli
+          </div>
+        </div>
+      </div>
+
+      <div id="content">
+        <div class="header">
+          <h1 id="greeting">Hi there!</h1>
+          <div id="intro">My name's <span id="intro-name">Angello</span>,
+              and this is the portfolio I made in Google's SPS program!
+          </div>
+        </div>
+
+        <hr>
+        
+        <div class="options">
+          <p class="option-item">You can read more about me <a id="about-link" href="about.html">here</a></p>
+          <p class="option-item"><a id="projects-link" href="projects.html">This</a> is a page with my personal projects</p>
+          <p class="option-item">OR, if you're feelin lucky, you can view a random piece of my professional
+              life by clicking below
+          </p>
+          <button class="my-button" onclick="gotoRandomSite()">I'm feelin lucky</button>
+        </div>
+
+      </div>
     </div>
+
   </body>
 </html>

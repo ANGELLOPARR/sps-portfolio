@@ -13,16 +13,22 @@
 // limitations under the License.
 
 /**
- * Adds a random greeting to the page.
+ * Navigates the user to a random site that is relevant
+ * to my professional life. This may include
+ * LinkedIn, a project repo, etc.
  */
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+function gotoRandomSite() {
+  const sites =
+      [
+          'https://github.com/kevinMoreland/QuarCards',
+          'https://github.com/ANGELLOPARR',
+          'https://www.linkedin.com/in/angelloparr/',
+          'about.html',
+          'projects.html'];
 
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+  // Pick a random site to navigate to.
+  const site = sites[Math.floor(Math.random() * sites.length)];
 
-  // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+  // Change current location to new site.
+  window.location.href = site;
 }
