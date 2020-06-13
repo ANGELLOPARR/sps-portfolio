@@ -41,6 +41,16 @@ function getComments() {
     commentsPromise.then(response => {
         return response.json();
     }).then((resText) => {
-        console.log(resText);
+        const commentsContainer = document.getElementById("comments-container");
+        commentsContainer.innerText = '';
+        resText.forEach(comment => {
+            commentsContainer.appendChild(createListElement(comment))
+        })
     });
+}
+
+function createListElement(text) {
+    const liElement = document.createElement('li');
+    liElement.innerText = text;
+    return liElement;
 }
