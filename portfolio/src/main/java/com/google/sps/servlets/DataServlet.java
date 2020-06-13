@@ -24,6 +24,16 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  private ArrayList<String> comments;
+
+  @Override
+  public void init() {
+    comments = new ArrayList<String>();
+    comments.add("I'm excited to be in SPS!");
+    comments.add("My dog Jack says hi!");
+    comments.add("Hopefully this JSON feature works LOL.");
+  }
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text/html;");
