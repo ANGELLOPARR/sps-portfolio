@@ -33,12 +33,23 @@ function gotoRandomSite() {
   window.location.href = site;
 }
 
-function fetchGreeting() {
+function getComments() {
     // Perform the fetch and store as promise
-    var greetingPromise = fetch('/data');
+    var commentsPromise = fetch('/data');
 
-    // Use callbacks on promise to extract the text and put into HTML element
-    greetingPromise.then(response => response.text()).then((resText) => {
-        document.getElementById('greeting-container').innerText = resText;
+    // Use callbacks on promise to extract the JSON object and put into HTML
+    commentsPromise.then(response => response.json()).then((resJson) => {
+        const commentsContainer = document.getElementById("comments-container");
+        commentsContainer.innerText = '';
+        
+        resJson.forEach(comment => {
+            commentsContainer.appendChild(createListElement(comment));
+        })
     });
+}
+
+function createListElement(text) {
+    const liElement = document.createElement('li');
+    liElement.innerText = text;
+    return liElement;
 }
