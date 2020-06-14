@@ -38,11 +38,10 @@ function getComments() {
     var commentsPromise = fetch('/data');
 
     // Use callbacks on promise to extract the JSON object and put into HTML
-    commentsPromise.then(response => {
-        return response.json();
-    }).then((resJson) => {
+    commentsPromise.then(response => response.json()).then((resJson) => {
         const commentsContainer = document.getElementById("comments-container");
         commentsContainer.innerText = '';
+        
         resJson.forEach(comment => {
             commentsContainer.appendChild(createListElement(comment));
         })
