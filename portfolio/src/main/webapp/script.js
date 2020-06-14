@@ -32,3 +32,13 @@ function gotoRandomSite() {
   // Change current location to new site.
   window.location.href = site;
 }
+
+function fetchGreeting() {
+    // Perform the fetch and store as promise
+    var greetingPromise = fetch('/data');
+
+    // Use callbacks on promise to extract the text and put into HTML element
+    greetingPromise.then(response => response.text()).then((resText) => {
+        document.getElementById('greeting-container').innerText = resText;
+    });
+}
