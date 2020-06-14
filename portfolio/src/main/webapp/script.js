@@ -38,9 +38,7 @@ function fetchGreeting() {
     var greetingPromise = fetch('/data');
 
     // Use callbacks on promise to extract the text and put into HTML element
-    greetingPromise.then(response => {
-        return response.text();
-    }).then((resText) => {
+    greetingPromise.then(response => response.text()).then((resText) => {
         document.getElementById('greeting-container').innerText = resText;
     });
 }
