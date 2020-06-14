@@ -71,7 +71,6 @@ public class DataServlet extends HttpServlet {
     commentEntity.setProperty("timestamp", timestamp);
 
     // Store in datastore
-    // (and add to comments array because I am not at the load data part yet)
     datastore.put(commentEntity);
 
     response.sendRedirect("/index.html");
