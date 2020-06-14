@@ -48,8 +48,9 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    // Get body of comment
+    // Get data for comment
     String newComment = getParameter(request, "comment-body", "");
+    long timestamp = System.currentTimeMillis();
 
     // Get datastore instance
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
@@ -57,9 +58,13 @@ public class DataServlet extends HttpServlet {
     // Store comment in datastore
     Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("body", newComment);
-    datastore.put(commentEntity);
+    commentEntity.setProperty("timestamp", timestamp);
 
+    // Store in datastore
+    // (and add to comments array because I am not at the load data part yet)
+    datastore.put(commentEntity);
     comments.add(newComment);
+
     response.sendRedirect("/index.html");
   }
 
