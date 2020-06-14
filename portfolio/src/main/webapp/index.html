@@ -49,6 +49,19 @@
 
           <hr>
 
+          <form action="/data" method="POST">
+            <h3>Leave a comment!</h3>
+
+            <p>What's your name?</p>
+            <input type="text" name="user-name"></input>
+
+            <p>What would you like to say?</p>
+            <textarea type="text" name="comment-body">Write something here!</textarea>
+            <br>
+            <button type="submit" class="my-button">Submit</button>
+
+          </form>
+
           <p class="option-item">Fetch all comments below!</p>
           <button class="my-button" onclick="getComments()">Get comments</button>
           <ul id="comments-container"></ul>
