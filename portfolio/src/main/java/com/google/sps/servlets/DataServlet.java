@@ -55,6 +55,8 @@ public class DataServlet extends HttpServlet {
   // Attempts to grab the value from a key-value pair in the request.
   public String getParameter(HttpServletRequest req, String key, String defaultVal) {
       String value = req.getParameter(key);
+
+      // Protect against adding null to our comments array.
       if (value == null) {
           return defaultVal;
       }
