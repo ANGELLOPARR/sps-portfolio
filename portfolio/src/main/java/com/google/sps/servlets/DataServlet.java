@@ -31,9 +31,6 @@ public class DataServlet extends HttpServlet {
   @Override
   public void init() {
     comments = new ArrayList<String>();
-    comments.add("I am excited to be in SPS!");
-    comments.add("My dog Jack says hi!");
-    comments.add("Hopefully this JSON feature works LOL.");
   }
 
   @Override
@@ -44,5 +41,23 @@ public class DataServlet extends HttpServlet {
 
     response.setContentType("application/json");
     response.getWriter().println(json);
+  }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Get body of comment
+    String newComment = getParameter(request, "comment-body", "");
+
+    comments.add(newComment);
+    response.sendRedirect("/index.html");
+  }
+
+  // Attempts to grab the value from a key-value pair in the request.
+  public String getParameter(HttpServletRequest req, String key, String defaultVal) {
+      String value = req.getParameter(key);
+      if (value == null) {
+          return defaultVal;
+      }
+      return value;
   }
 }
