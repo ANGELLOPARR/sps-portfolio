@@ -26,12 +26,7 @@ import java.util.ArrayList;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  private ArrayList<String> comments;
-
-  @Override
-  public void init() {
-    comments = new ArrayList<String>();
-  }
+  private ArrayList<String> comments = new ArrayList<String>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
