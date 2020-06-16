@@ -43,13 +43,21 @@ function getComments() {
         commentsContainer.innerText = '';
         
         resJson.forEach(comment => {
-            commentsContainer.appendChild(createListElement(comment));
+            commentsContainer.appendChild(createParagraphElement(comment));
         })
     });
 }
 
+/** Creates an <li> element containing text. */
 function createListElement(text) {
     const liElement = document.createElement('li');
     liElement.innerText = text;
     return liElement;
+}
+
+/** Creates a <p> element containing text. */
+function createParagraphElement(text) {
+    const pElement = document.createElement('p');
+    pElement.innerText = text;
+    return pElement;
 }
