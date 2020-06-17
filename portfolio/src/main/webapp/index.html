@@ -49,11 +49,11 @@
 
           <hr>
 
-          <form action="/data" method="POST">
+          <form action="/data" method="POST" onsubmit="return verifyForm()">
             <p class="option-item">Leave a comment!</p>
 
             <p>What would you like to say?</p>
-            <textarea type="text" name="comment-body">Write something here!</textarea>
+            <textarea type="text" name="comment-body" required>Write something here!</textarea>
             <br>
             <button type="submit" class="my-button">Submit</button>
 
