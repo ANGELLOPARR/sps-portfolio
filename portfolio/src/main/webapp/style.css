@@ -1,15 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;600&family=Roboto+Mono:wght@300;400;500;700&display=swap');
 
 :root {
-    --g-red:  #ea4335;
-    --g-blue: #4285f4;
-    --g-green:  #34a853;
-    --g-yellow:  #fbbc05;
-    --my-yellow: #fbe8a6;
-    --my-orange: #f4976c;
-    --my-dark-blue: #303c6c;
-    --my-mint: #b4dfe5;
-    --my-light0blue: #d2fdff;
+    --my-green:  49, 133, 71;
+    --my-blue: 97, 101, 207;
+    --my-red:  219, 55, 101;
+    --my-yellow:  235, 183, 73;
     --dark: #343a40;
 }
 
@@ -24,6 +19,11 @@ body {
     background-color: white;
     font-family: 'Inconsolata', monospace;
     color: var(--dark);
+}
+
+a {
+    color: white;
+    text-decoration: none;
 }
 
 img {
@@ -60,6 +60,7 @@ h3 {
     top: 0;
     width: 92%; /* 8% is taken from the padding on left and right */
     border-bottom: 1px solid white;
+    z-index: 1;
 }
 
 .nav-link {
@@ -75,11 +76,6 @@ h3 {
 
 .nav-right {
     margin-left: 4%;
-}
-
-.nav-link a {
-    color: white;
-    text-decoration: none;
 }
 
 .nav-link:hover {
@@ -115,7 +111,7 @@ h3 {
 .about-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.2fr 1fr;
+    grid-template-rows: 0.3fr 1fr;
     grid-template-areas:
         "header header"
         "picture about-text";
@@ -164,14 +160,39 @@ h3 {
 
 #project-1 {
     grid-area: proj1;
+    background-color: rgba(var(--my-green), 0.8);
 }
 
 #project-2 {
     grid-area: proj2;
+    background-color: rgba(var(--my-blue), 0.8);
 }
 
 #project-3 {
     grid-area: proj3;
+    background-color: rgba(var(--my-red), 0.8);
+}
+
+.card {
+    border-radius: 5px;
+    color: white;
+    width: 80%;
+    padding: 0% 5% 3% 5%;
+    transition: transform .2s; /* transition time for hover */
+}
+
+.card:hover {
+    transform: scale(1.07);
+}
+
+.card-title {
+    font-size: 1.5em;
+    padding-bottom: 3px;
+    border-bottom: 4px solid white;
+}
+
+.card-link {
+    float: right;
 }
 
 .my-button {
