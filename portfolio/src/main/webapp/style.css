@@ -8,12 +8,6 @@
     --dark: #343a40;
 }
 
-hr {
-    width: 90%;
-    margin: 0px auto 20px auto;
-    color: var(--dark);
-}
-
 body {
     margin: 0;
     background-color: white;
@@ -21,11 +15,19 @@ body {
     color: var(--dark);
 }
 
+hr {
+    width: 90%;
+    margin: 0px auto 20px auto;
+    color: var(--dark);
+}
+
+/* I really dislike the default blue color and underline of links */
 a {
     color: white;
     text-decoration: none;
 }
 
+/* Give images some flavor so it's not just a cut/paste square */
 img {
     border-radius: 2px;
     padding: 2%;
@@ -36,6 +38,7 @@ h3 {
     font-size: 1.6em;
 }
 
+/* Spacing between navbar options */
 #personal-tab {
     justify-self: end;
 }
@@ -44,6 +47,15 @@ h3 {
     justify-self: start;
 }
 
+.nav-left {
+    margin-right: 4%;
+}
+
+.nav-right {
+    margin-left: 4%;
+}
+
+/* Navbar stylings */
 .navbar-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -63,18 +75,11 @@ h3 {
     transition: border-bottom 0.4s;
 }
 
-.nav-left {
-    margin-right: 4%;
-}
-
-.nav-right {
-    margin-left: 4%;
-}
-
 .nav-link:hover {
     border-bottom: 2px solid white;
 }
 
+/* Top bar / intro styles */
 .intro {
     width: 80%;
     margin: 10% auto 0% auto;
@@ -88,23 +93,11 @@ h3 {
     text-align: right;
 }
 
-#content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-  margin-top: 5%;
-  padding-bottom: 10%;
-}
-
-#pfp {
-    border-radius: 2%;
-    border: 2px solid black;
-}
-
+/* About section styles */
 .about-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.3fr 1fr;
+    grid-template-rows: 0.2fr 1fr;
     grid-template-areas:
         "header header"
         "picture about-text";
@@ -130,15 +123,16 @@ h3 {
     border-radius: 2px;
 }
 
-#first-about {
+#first-about { /* This is for the first paragraph in the about me text */
     border-left: 3px solid var(--dark);
     padding-left: 7px;
 }
 
+/* Projects section styles */
 .projects-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 0.2fr 1fr;
+    grid-template-rows: 0.3fr 1fr;
     grid-template-areas:
         "header header header"
         "proj1 proj2 proj3";
@@ -166,6 +160,7 @@ h3 {
     background-color: rgba(var(--my-red), 0.8);
 }
 
+/* Within Projects section, these are styles for the project cards */
 .card {
     border-radius: 5px;
     color: white;
@@ -188,6 +183,7 @@ h3 {
     float: right;
 }
 
+/* Feedback section styles (users enter comments here) */
 .feedback-wrapper {
     width: 80%;
     margin: 2% auto 2% auto;
@@ -224,6 +220,7 @@ form textarea {
     font-size: 1.2em;
 }
 
+/* Feedback section styles (comments submitted by users appear here) */
 .comments-wrapper {
     width: 80%;
     margin: 2% auto 2% auto;
