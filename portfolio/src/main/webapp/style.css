@@ -1,132 +1,231 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;600&family=Roboto+Mono:wght@300;400;500;700&display=swap');
 
 :root {
-    --g-red:  #ea4335;
-    --g-blue: #4285f4;
-    --g-green:  #34a853;
-    --g-yellow:  #fbbc05;
-}
-
-a {
-    text-decoration: none;
-    color: var(--g-blue);
-}
-
-hr {
-    margin-bottom: 3em;
+    --my-green:  49, 133, 71;
+    --my-blue: 97, 101, 207;
+    --my-red:  219, 55, 101;
+    --my-yellow:  235, 183, 73;
+    --dark: #343a40;
 }
 
 body {
     margin: 0;
+    background-color: white;
+    font-family: 'Inconsolata', monospace;
+    color: var(--dark);
 }
 
-form {
-    text-align: left;
-    border: 1px solid grey;
-    border-radius: 5px;
-    padding: 1% 2%;
+hr {
+    width: 90%;
+    margin: 0px auto 20px auto;
+    color: var(--dark);
 }
 
-.container {
-    font-family: 'Noto Sans', sans-serif;
+/* I really dislike the default blue color and underline of links */
+a {
+    color: white;
+    text-decoration: none;
 }
 
-#content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 850px;
-  margin-top: 5%;
-  padding-bottom: 10%;
+/* Give images some flavor so it's not just a cut/paste square */
+img {
+    border-radius: 2px;
+    padding: 2%;
+    border: 8px solid var(--dark);
 }
 
-#intro {
-    font-size: 2.2em;
-    margin-bottom: 5%;
+h3 {
+    font-size: 1.6em;
 }
 
-#pfp {
-    border-radius: 2%;
-    border: 2px solid black;
+/* Spacing between navbar options */
+#personal-tab {
+    justify-self: end;
 }
 
-.header {
-    text-align: center;
-}
-
-.options {
-    text-align: center;
-}
-
-.option-item {
-    font-size: 1.4em;
-    font-weight: 600;
-}
-
-.nav-wrapper {
-    display: flex;
-    justify-content: space-between;
-    padding: 1% 4%;
-    background-color: #2d2d2d;
+#professional-tab {
+    justify-self: start;
 }
 
 .nav-left {
-    display: flex;
-    letter-spacing: 1px;
+    margin-right: 4%;
+}
+
+.nav-right {
+    margin-left: 4%;
+}
+
+/* Navbar stylings */
+.navbar-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1% 4%;
+    background-color: var(--dark);
+    position: fixed;
+    top: 0;
+    width: 92%; /* 8% is taken from the padding on left and right */
+    border-bottom: 1px solid white;
+    z-index: 1;
 }
 
 .nav-link {
-    margin-right: 26px;
-    font-size: 1.1em;
-    text-transform: uppercase;
-    height: 22px;
+    font-size: 1.4em;
+    padding-bottom: 2px;
     border-bottom: 2px solid transparent;
     transition: border-bottom 0.4s;
-    padding-bottom: 2px;
-    padding-top: 4px;
-}
-
-.nav-link a {
-    color: white;
-    text-decoration: none;
 }
 
 .nav-link:hover {
-    border-bottom: 3px solid white;
+    border-bottom: 2px solid white;
 }
 
-#nav-name {
-    font-size: 1.4em;
+/* Top bar / intro styles */
+.intro {
+    width: 80%;
+    margin: 10% auto 0% auto;
+}
+
+.intro h1 {
+    font-size: 2.4em;
+}
+
+.intro h2 {
+    text-align: right;
+}
+
+/* About section styles */
+.about-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.2fr 1fr;
+    grid-template-areas:
+        "header header"
+        "picture about-text";
+    justify-items: center;
+    width: 80%;
+    margin: 2% auto 2% auto;
+}
+
+#about-header {
+    grid-area: header;
+}
+
+#my-pic {
+    grid-area: picture;
+}
+
+#about-text {
+    grid-area: about-text;
+    justify-self: end;
+    width: 90%;
+    padding: 2%;
+    border: 8px solid var(--dark);
+    border-radius: 2px;
+}
+
+#first-about { /* This is for the first paragraph in the about me text */
+    border-left: 3px solid var(--dark);
+    padding-left: 7px;
+}
+
+/* Projects section styles */
+.projects-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.3fr 1fr;
+    grid-template-areas:
+        "header header header"
+        "proj1 proj2 proj3";
+    width: 80%;
+    margin: 0px auto 2% auto;
+    justify-items: center;
+}
+
+#projects-header {
+    grid-area: header;
+}
+
+#project-1 {
+    grid-area: proj1;
+    background-color: rgba(var(--my-green), 0.8);
+}
+
+#project-2 {
+    grid-area: proj2;
+    background-color: rgba(var(--my-blue), 0.8);
+}
+
+#project-3 {
+    grid-area: proj3;
+    background-color: rgba(var(--my-red), 0.8);
+}
+
+/* Within Projects section, these are styles for the project cards */
+.card {
+    border-radius: 5px;
     color: white;
+    width: 80%;
+    padding: 0% 5% 3% 5%;
+    transition: transform .2s; /* transition time for hover */
 }
 
-#greeting {
-    font-size: 3.5em;
-    margin-top: 0%;
+.card:hover {
+    transform: scale(1.07);
+}
+
+.card-title {
+    font-size: 1.5em;
+    padding-bottom: 3px;
+    border-bottom: 4px solid white;
+}
+
+.card-link {
+    float: right;
+}
+
+/* Feedback section styles (users enter comments here) */
+.feedback-wrapper {
+    width: 80%;
+    margin: 2% auto 2% auto;
+}
+
+#feedback-header {
+    text-align: center;
+}
+
+.form-label {
+    font-size: 1.6em;
+}
+
+form textarea {
+    width: 70%;
+    height: 300px;
+    padding: 2%;
+    resize: none;
+    border: 2px solid var(--dark);
+    border-radius: 8px;
+    background-color: whitesmoke;
     margin-bottom: 2%;
-    color: var(--g-green);
-}
-
-#intro-name {
-    color: #4285f4;
-}
-
-#projects-link {
-    color: #ea4335;
-}
-
-#about-link {
-    color: #fbbc05;
 }
 
 .my-button {
-    background-color: var(--g-green);
+    background-color: rgb(var(--my-green));
     border-radius: 12px;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 0.8% 1.7%;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
-    font-size: 20px;
-    font-weight: 600px;
+    font-size: 1.2em;
+}
+
+/* Feedback section styles (comments submitted by users appear here) */
+.comments-wrapper {
+    width: 80%;
+    margin: 2% auto 2% auto;
+}
+
+#comments-header {
+    font-size: 1.7em;
 }

@@ -1,71 +1,110 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Angello's Portfolio</title>
-    <!-- My stylesheets -->
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body onload="getComments()">
-    <div class="container">
-      <div class="nav-wrapper">
-        <div class="nav-left">
-          <div class="nav-link">
-            <a href="index.html">Home</a>
-          </div>
-          <div class="nav-link">
-            <a href="about.html">About me</a>
-          </div>
-          <div class="nav-link">
-            <a href="projects.html">Projects</a>
-          </div>
-        </div>
 
-        <div class="nav-right">
-          <div id="nav-name">
-            Angello Parrolivelli
-          </div>
-        </div>
-      </div>
+<head>
+	<meta charset="UTF-8">
+	<title>Angello's Portfolio</title>
+	<!-- My stylesheets -->
+	<link rel="stylesheet" href="style.css">
+  <link rel="icon" href="/images/a.ico"
+	<script src="script.js"></script>
+</head>
 
-      <div id="content">
-        <div class="header">
-          <h1 id="greeting">Hi there!</h1>
-          <div id="intro">My name's <span id="intro-name">Angello</span>,
-              and this is the portfolio I made in Google's SPS program!
-          </div>
-        </div>
+<body onload="getComments()">
 
-        <hr>
-        
-        <div class="options">
-          <p class="option-item">You can read more about me <a id="about-link" href="about.html">here</a></p>
-          <p class="option-item"><a id="projects-link" href="projects.html">This</a> is a page with my personal projects</p>
-          <p class="option-item">OR, if you're feelin lucky, you can view a random piece of my professional
-              life by clicking below
-          </p>
-          <button class="my-button" onclick="gotoRandomSite()">I'm feelin lucky</button>
-
-          <hr>
-
-          <form action="/data" method="POST" onsubmit="return verifyForm()">
-            <p class="option-item">Leave a comment!</p>
-
-            <p>What would you like to say?</p>
-            <textarea type="text" name="comment-body" required>Write something here!</textarea>
-            <br>
-            <button type="submit" class="my-button">Submit</button>
-
-          </form>
-
-          <h3>Found Comments:</h3>
-          <div id="comments-container"></div>
-          
-        </div>
-
-      </div>
+  <div class="navbar-wrapper">
+    <div class="nav-link nav-left" id="personal-tab">
+      <a href="index.html">personal</a>
     </div>
+    <div class="nav-link nav-right" id="professional-tab">
+      <!-- Not yet implemented -->
+      <a href="#">professional</a>
+    </div>
+  </div>
 
-  </body>
+  <div class="intro">
+    <h1 id="name-header">hi, i'm angello =)</h1>
+    <h2>i am a<br>
+      <span style="color: #318547">developer</span><br>
+      <span style="color: #6165cf">problem-solver</span><br>
+      <span style="color: #ebb749">inventor</span><br>
+      <span style="color: #db3765">engineer</span><br>
+  </div>
+
+  <hr>
+
+  <div class="about-wrapper">
+    <h3 id="about-header">a little about me...</h3>
+    <img id="my-pic" src="images/me_less_color.jpg" height="456px"></img>
+    <div id="about-text">
+      <p id="first-about">i'm currently a soon-to-be senior at California Polytechnic State University, San Luis Obispo.
+        most people just call it "Cal Poly" for short. my major is computer science and hopefully soon i'll
+        be a full-time software engineer.
+      </p>
+      <p>sometimes i think i have too many interests in the computer science field, and it often gets hard
+        choose my favorites.
+      </p>
+      <p>one of my favorite things to do is develop full-stack web applications. initially, i taught myself
+        how to develop frontend applications because i loved the design aspect of it. though i've never
+        been great with a pencil and paper, i found that i could translate my thoughts into designs using
+        code much more effectively. as i advanced in my computer science education, i realized the uses
+        of backend code as well, and soon taught myself that as well.
+      </p>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="projects-wrapper">
+    <h3 id="projects-header">some projects i've worked on</h3>
+    <div id="project-1" class="card">
+      <p class="card-title">predicting credit card default</p>
+      <p class="card-desc">for a final project in my data science class I worked in a group
+        with two other students that compared a variety of machine learning models in their
+        ability to predict whether someone would default on their next credit card payment.
+      </p>
+      <!-- I don't have this code on GitHub yet. -->
+      <a class="card-link" href="#">check it out -></a>
+    </div>
+    <div id="project-2" class="card">
+      <p class="card-title">quarantine cards</p>
+      <p class="card-desc">my cs buddy kevin and i made a web application called quarantine cards.
+        it's a multiplayer card game turned into a web application. it was meant to help friends
+        reconnect during the stay-at-home orders and encourage social distancing.
+      </p>
+      <a class="card-link" href="http://www.qcards.us/">check it out -></a>
+    </div>
+    <div id="project-3" class="card">
+      <p class="card-title">explore polytech</p>
+      <p class="card-desc">with my software engineering group of 2 other people,
+        we used an agile project management approach to develop a full-stack web application
+        where students could give their experiences about technical electives at Cal Poly.
+        this would help newer students decide what electives interest them most.
+      </p>
+      <!-- I don't have this code on GitHub yet. -->
+      <a class="card-link" href="#">check it out -></a>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="feedback-wrapper">
+    <h3 id="feedback-header">drop a comment or some feedback!</h3>
+    <form action="/data" method="POST" onsubmit="return verifyForm()">
+      <p class="form-label">what's on your mind?</p>
+      <textarea type="text" name="comment-body" required></textarea>
+      <br>
+      <button type="submit" class="my-button">submit</button>
+	  </form>
+  </div>
+
+  <hr>
+
+  <div class="comments-wrapper">
+    <p id="comments-header">found comments:</p>
+  	<div id="comments-container"></div>
+  </div>
+
+</body>
+
 </html>

@@ -32,14 +32,12 @@ import java.util.ArrayList;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  private ArrayList<String> comments = new ArrayList<String>();
-
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Arrange needed variables
     Gson gson = new Gson();
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    comments = new ArrayList<String>();
+    ArrayList<String> comments = new ArrayList<String>();
 
     // Query Datastore for comments
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
