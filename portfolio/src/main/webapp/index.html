@@ -87,15 +87,19 @@
   <hr>
 
   <div class="feedback-wrapper">
+    <h3 id="feedback-header">drop a comment or some feedback!</h3>
     <form action="/data" method="POST" onsubmit="return verifyForm()">
-      <p class="option-item">Leave a comment!</p>
-      <p>What would you like to say?</p>
-      <textarea type="text" name="comment-body" required>Write something here!</textarea>
+      <p class="form-label">what's on your mind?</p>
+      <textarea type="text" name="comment-body" required></textarea>
       <br>
-      <button type="submit" class="my-button">Submit</button>
+      <button type="submit" class="my-button">submit</button>
 	  </form>
+  </div>
 
-    <h3>Found Comments:</h3>
+  <hr>
+
+  <div class="comments-wrapper">
+    <p id="comments-header">found comments:</p>
   	<div id="comments-container"></div>
   </div>
 
