@@ -209,7 +209,7 @@ form textarea {
 }
 
 .my-button {
-    background-color: rgb(var(--my-green));
+    background-color: rgba(var(--my-green), 0.8);
     border-radius: 12px;
     border: none;
     color: white;
@@ -218,6 +218,7 @@ form textarea {
     text-decoration: none;
     cursor: pointer;
     font-size: 1.2em;
+    font-family: 'Inconsolata', monospace;
 }
 
 /* Feedback section styles (comments submitted by users appear here) */
@@ -226,6 +227,55 @@ form textarea {
     margin: 2% auto 2% auto;
 }
 
+.comments-header-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #comments-header {
     font-size: 1.7em;
+}
+
+/* .dropdown {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    text-align: center;
+}
+
+.dropdown-options {
+    display: none;
+    background-color: #f1f1f1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.show {
+    display: block; /* must be below 'display: none' in css file */
+}
+
+.dropdown ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    position: absolute; /* allows dropdown menu to not affect other elements */
+}
+
+.dropdown ul li {
+    padding: 4px 2px;
+    margin-right: 20px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.dropdown ul li:hover {
+    background-color: #ddd;
+}
+
+#translate-button {
+    display: inline;
+    /* border-radius: 0px; */
+    padding: 4px 8px;
+    background-color: rgba(var(--my-blue), 0.8);
 }
