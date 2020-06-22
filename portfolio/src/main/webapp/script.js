@@ -68,9 +68,11 @@ function translateComments() {
   });
 
   translatedComments.then(response => response.json())
-    .then(json => console.log(json));
-
-  return 1;
+    .then(comments => {
+      container.innerText = '';
+      comments.forEach(comment =>
+        container.appendChild(createParagraphElement(comment)))
+    });
 }
 
 /** Creates an <li> element containing text. */
