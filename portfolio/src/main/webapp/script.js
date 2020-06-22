@@ -19,12 +19,12 @@
  */
 function gotoRandomSite() {
   const sites =
-      [
-          'https://github.com/kevinMoreland/QuarCards',
-          'https://github.com/ANGELLOPARR',
-          'https://www.linkedin.com/in/angelloparr/',
-          'about.html',
-          'projects.html'];
+    [
+      'https://github.com/kevinMoreland/QuarCards',
+      'https://github.com/ANGELLOPARR',
+      'https://www.linkedin.com/in/angelloparr/',
+      'about.html',
+      'projects.html'];
 
   // Pick a random site to navigate to.
   const site = sites[Math.floor(Math.random() * sites.length)];
@@ -34,30 +34,52 @@ function gotoRandomSite() {
 }
 
 function getComments() {
-    // Perform the fetch and store as promise
-    var commentsPromise = fetch('/data');
+  // Perform the fetch and store as promise
+  var commentsPromise = fetch('/data');
 
-    // Use callbacks on promise to extract the JSON object and put into HTML
-    commentsPromise.then(response => response.json()).then((resJson) => {
-        const commentsContainer = document.getElementById("comments-container");
-        commentsContainer.innerText = '';
-        
-        resJson.forEach(comment => {
-            commentsContainer.appendChild(createParagraphElement(comment));
-        })
-    });
+  // Use callbacks on promise to extract the JSON object and put into HTML
+  commentsPromise.then(response => response.json()).then((resJson) => {
+    const commentsContainer = document.getElementById("comments-container");
+    commentsContainer.innerText = '';
+
+    resJson.forEach(comment => {
+      commentsContainer.appendChild(createParagraphElement(comment));
+    })
+  });
+}
+
+function translateComments() {
+  var container = document.getElementById('comments-container');
+  var languageCode = document.getElementById('language').value;
+    const params = new URLSearchParams();
+
+  // Get comments and put into request
+  for (const el of container.children) {
+    params.append('comments', el.innerText);
+  }
+  params.append('languageCode', languageCode);
+
+  // Clear comments in current language
+  container.innerText = 'loading...';
+
+  fetch('/translate', {
+    method: 'POST',
+    body: params
+  });
+
+  return 1;
 }
 
 /** Creates an <li> element containing text. */
 function createListElement(text) {
-    const liElement = document.createElement('li');
-    liElement.innerText = text;
-    return liElement;
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
 }
 
 /** Creates a <p> element containing text. */
 function createParagraphElement(text) {
-    const pElement = document.createElement('p');
-    pElement.innerText = text;
-    return pElement;
+  const pElement = document.createElement('p');
+  pElement.innerText = text;
+  return pElement;
 }
