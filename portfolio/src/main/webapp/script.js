@@ -62,10 +62,13 @@ function translateComments() {
   // Clear comments in current language
   container.innerText = 'loading...';
 
-  fetch('/translate', {
+  translatedComments = fetch('/translate', {
     method: 'POST',
     body: params
   });
+
+  translatedComments.then(response => response.json())
+    .then(json => console.log(json));
 
   return 1;
 }
