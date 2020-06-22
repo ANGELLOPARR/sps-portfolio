@@ -238,41 +238,6 @@ form textarea {
     font-size: 1.7em;
 }
 
-/* .dropdown {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    text-align: center;
-}
-
-.dropdown-options {
-    display: none;
-    background-color: #f1f1f1;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-.show {
-    display: block; /* must be below 'display: none' in css file */
-}
-
-.dropdown ul {
-    list-style-type: none;
-    margin: 0px;
-    padding: 0px;
-    position: absolute; /* allows dropdown menu to not affect other elements */
-}
-
-.dropdown ul li {
-    padding: 4px 2px;
-    margin-right: 20px;
-    width: 100%;
-    cursor: pointer;
-}
-
-.dropdown ul li:hover {
-    background-color: #ddd;
-}
-
 #translate-button {
     display: inline;
     /* border-radius: 0px; */
