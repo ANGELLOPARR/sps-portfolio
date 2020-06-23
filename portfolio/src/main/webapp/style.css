@@ -9,7 +9,7 @@
 }
 
 body {
-    margin: 0;
+    margin: 0 0 20% 0;
     background-color: white;
     font-family: 'Inconsolata', monospace;
     color: var(--dark);

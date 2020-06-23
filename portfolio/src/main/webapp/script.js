@@ -36,26 +36,20 @@ function gotoRandomSite() {
 function getComments() {
   // Perform the fetch and store as promise
   var commentsPromise = fetch('/data');
-
-  // Use callbacks on promise to extract the JSON object and put into HTML
-  commentsPromise.then(response => response.json()).then((resJson) => {
-    const commentsContainer = document.getElementById("comments-container");
-    commentsContainer.innerText = '';
-
-    resJson.forEach(comment => {
-      commentsContainer.appendChild(createParagraphElement(comment));
+  commentsPromise.then(response => response.json())
+    .then((resJson) => {
+      comments = resJson;
+      updateDOMComments();
     })
-  });
 }
 
 function translateComments() {
-  var container = document.getElementById('comments-container');
   var languageCode = document.getElementById('language').value;
-    const params = new URLSearchParams();
+  const params = new URLSearchParams();
 
-  // Get comments and put into request
-  for (const el of container.children) {
-    params.append('comments', el.innerText);
+  // Fill params with comments from variable
+  for (const comment of comments) {
+    params.append('comments', comment);
   }
   params.append('languageCode', languageCode);
 
@@ -68,11 +62,18 @@ function translateComments() {
   });
 
   translatedComments.then(response => response.json())
-    .then(comments => {
-      container.innerText = '';
-      comments.forEach(comment =>
-        container.appendChild(createParagraphElement(comment)))
+    .then(translated => {
+      comments = translated;
+      updateDOMComments();
     });
+}
+
+function updateDOMComments() {
+  container = document.getElementById('comments-container');
+  container.innerText = '';
+  comments.forEach(comment => {
+    container.appendChild(createParagraphElement(comment));
+  })
 }
 
 /** Creates an <li> element containing text. */
