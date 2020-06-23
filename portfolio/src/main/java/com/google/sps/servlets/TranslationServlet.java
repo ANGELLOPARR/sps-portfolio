@@ -36,4 +36,8 @@ public class TranslationServlet extends HttpServlet {
     response.getWriter().println(json);
   }
 
+  private String[] translateComments(String[] comments, String code) {
+    
+  }
+
 }
