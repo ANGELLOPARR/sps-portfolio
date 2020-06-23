@@ -15,12 +15,10 @@ public class TranslationServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    Gson gson = new Gson();
-    String[] comments;
     String languageCode = request.getParameter("languageCode");
     Translate translate = TranslateOptions.getDefaultInstance().getService();
 
-    comments = request.getParameterValues("comments");
+    String[] comments = request.getParameterValues("comments");
 
     // Translate and store each comment.
     for (int i = 0; i < comments.length; i++) {
@@ -31,13 +29,14 @@ public class TranslationServlet extends HttpServlet {
     }
 
     // Output the translation.
+    Gson gson = new Gson();
     String json = gson.toJson(comments);
     response.setContentType("application/json");
     response.getWriter().println(json);
   }
 
   private String[] translateComments(String[] comments, String code) {
-    
+
   }
 
 }
