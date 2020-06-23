@@ -16,17 +16,9 @@ public class TranslationServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String languageCode = request.getParameter("languageCode");
-    Translate translate = TranslateOptions.getDefaultInstance().getService();
-
     String[] comments = request.getParameterValues("comments");
 
-    // Translate and store each comment.
-    for (int i = 0; i < comments.length; i++) {
-      Translation translation =
-        translate.translate(comments[i], Translate.TranslateOption.targetLanguage(languageCode));
-      String translatedText = translation.getTranslatedText();
-      comments[i] = translatedText;
-    }
+    comments = translateComments(comments, languageCode);
 
     // Output the translation.
     Gson gson = new Gson();
@@ -36,7 +28,17 @@ public class TranslationServlet extends HttpServlet {
   }
 
   private String[] translateComments(String[] comments, String code) {
+    Translate translate = TranslateOptions.getDefaultInstance().getService();
 
+    // Translate and store each comment.
+    for (int i = 0; i < comments.length; i++) {
+      Translation translation =
+        translate.translate(comments[i], Translate.TranslateOption.targetLanguage(code));
+      String translatedText = translation.getTranslatedText();
+      comments[i] = translatedText;
+    }
+
+    return comments;
   }
 
 }
