@@ -9,7 +9,7 @@
 }
 
 body {
-    margin: 0;
+    margin: 0 0 20% 0;
     background-color: white;
     font-family: 'Inconsolata', monospace;
     color: var(--dark);
@@ -209,7 +209,7 @@ form textarea {
 }
 
 .my-button {
-    background-color: rgb(var(--my-green));
+    background-color: rgba(var(--my-green), 0.8);
     border-radius: 12px;
     border: none;
     color: white;
@@ -218,6 +218,7 @@ form textarea {
     text-decoration: none;
     cursor: pointer;
     font-size: 1.2em;
+    font-family: 'Inconsolata', monospace;
 }
 
 /* Feedback section styles (comments submitted by users appear here) */
@@ -226,6 +227,20 @@ form textarea {
     margin: 2% auto 2% auto;
 }
 
+.comments-header-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #comments-header {
     font-size: 1.7em;
+}
+
+#translate-button {
+    display: inline;
+    /* border-radius: 0px; */
+    padding: 4px 8px;
+    background-color: rgba(var(--my-blue), 0.8);
 }

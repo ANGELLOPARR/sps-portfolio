@@ -6,7 +6,7 @@
 	<title>Angello's Portfolio</title>
 	<!-- My stylesheets -->
 	<link rel="stylesheet" href="style.css">
-  <link rel="icon" href="/images/a.ico"
+    <link rel="icon" href="/images/a.ico">
 	<script src="script.js"></script>
 </head>
 
@@ -101,7 +101,24 @@
   <hr>
 
   <div class="comments-wrapper">
-    <p id="comments-header">found comments:</p>
+    <div class="comments-header-wrapper">
+      <p id="comments-header">found comments:</p>
+      <div>
+        <select id="language">
+          <option value="en">English</option>
+          <option value="es">Spanish</option>
+          <option value="hi">Hindi</option>
+          <option value="ar">Arabic</option>
+          <option value="zh">Chinese</option>
+        </select>
+        <button
+            id="translate-button"
+            class="my-button"
+            onclick="translateComments()">
+          translate!
+        </button>
+      </div>
+    </div>
   	<div id="comments-container"></div>
   </div>
 
