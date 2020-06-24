@@ -73,7 +73,7 @@ function updateDOMComments() {
   container = document.getElementById('comments-container');
   container.innerText = '';
   comments.forEach(comment => {
-    container.appendChild(createParagraphElement(comment));
+    container.appendChild(createComment(comment));
   })
 }
 
@@ -89,4 +89,35 @@ function createParagraphElement(text) {
   const pElement = document.createElement('p');
   pElement.innerText = text;
   return pElement;
+}
+
+/** Creates a combination of HTML elements representing a comment */
+function createComment(commentData) {
+
+  // Create div for whole comment
+  let commentWrapper = document.createElement('div');
+  commentWrapper.classList.add('comment');
+
+  // Create div for just the metadata (name and time/date)
+  let commentMeta = document.createElement('div');
+  commentMeta.classList.add('comment-metadata');
+
+  // Create div for body of comment (can include anything else)
+  // Allows us to add more stuff in the future
+  let commentBody = document.createElement('div');
+  commentBody.classList.add('comment-body');
+
+  // Create paragraph elements for content
+  let name = createParagraphElement(commentData['username']);
+  let body = createParagraphElement(commentData['comment']);
+  let timestamp = createParagraphElement(new Date(commentData['timestamp']));
+
+  // Assemble comment contents
+  commentWrapper.appendChild(commentMeta);
+  commentWrapper.appendChild(commentBody);
+  commentMeta.appendChild(name);
+  commentMeta.appendChild(timestamp);
+  commentBody.appendChild(body);
+  
+  return commentWrapper;
 }

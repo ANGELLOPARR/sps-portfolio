@@ -252,3 +252,28 @@ form input {
     padding: 4px 8px;
     background-color: rgba(var(--my-blue), 0.8);
 }
+
+.comment {
+    margin-bottom: 4%;
+}
+
+.comment p {
+    margin: 4px;
+}
+
+.comment-metadata {
+    display: flex;
+    justify-content: space-between;
+    background-color: #e4e4e4;
+    padding: 1%;
+    border-radius: 8px 8px 0px 0px;
+    border: 1px solid black;
+    border-bottom: none;
+}
+
+.comment-body {
+    padding: 1%;
+    border: 1px solid black;
+    border-top: none;
+    border-radius: 0px 0px 8px 8px;
+}
