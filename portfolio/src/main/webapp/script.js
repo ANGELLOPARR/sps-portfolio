@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+var commentData = [];
+
 /**
  * Navigates the user to a random site that is relevant
  * to my professional life. This may include
@@ -39,7 +41,7 @@ function getComments() {
   commentsPromise.then(response => response.json())
     .then((resJson) => {
       console.log(resJson);
-      comments = resJson;
+      commentData = resJson;
       updateDOMComments();
     })
 }
@@ -47,6 +49,7 @@ function getComments() {
 function translateComments() {
   var languageCode = document.getElementById('language').value;
   const params = new URLSearchParams();
+  var comments = extractComments();
 
   // Fill params with comments from variable
   for (const comment of comments) {
@@ -64,15 +67,42 @@ function translateComments() {
 
   translatedComments.then(response => response.json())
     .then(translated => {
-      comments = translated;
+      setNewComments(translated);
       updateDOMComments();
     });
 }
 
+/** Obtains the list of only comment texts from the
+ * commentData var that contains all data for each comment */
+function extractComments() {
+  commentTexts = []
+
+  for (const comment of commentData) {
+    commentTexts.push(comment['comment']);
+  }
+
+  return commentTexts;
+}
+
+/** Given a list of strings representing the bodies of comments,
+ * replaces the old comment texts with the new given ones. */
+function setNewComments(comments) {
+  if (comments.length != commentData.length) {
+    console.log('New comments and old comments are not of same length');
+    return;
+  }
+
+  for (var i = 0; i < comments.length; i++) {
+    commentData[i]['comment'] = comments[i];
+  }
+}
+
+/** Using the commentData variable, creates and populates the DOM with
+ * structured HTML for comments */
 function updateDOMComments() {
   container = document.getElementById('comments-container');
   container.innerText = '';
-  comments.forEach(comment => {
+  commentData.forEach(comment => {
     container.appendChild(createComment(comment));
   })
 }
