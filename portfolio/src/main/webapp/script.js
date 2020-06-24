@@ -48,11 +48,10 @@ function getComments() {
 function translateComments() {
   var languageCode = document.getElementById('language').value;
   const params = new URLSearchParams();
-  var comments = extractComments();
 
   // Fill params with comments from variable
-  for (const comment of comments) {
-    params.append('comments', comment);
+  for (const comment of commentData) {
+    params.append('comments', comment['comment']);
   }
   params.append('languageCode', languageCode);
 
