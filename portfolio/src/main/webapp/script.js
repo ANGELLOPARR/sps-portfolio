@@ -70,18 +70,6 @@ function translateComments() {
     });
 }
 
-/** Obtains the list of only comment texts from the
- * commentData var that contains all data for each comment */
-function extractComments() {
-  commentTexts = []
-
-  for (const comment of commentData) {
-    commentTexts.push(comment['comment']);
-  }
-
-  return commentTexts;
-}
-
 /** Given a list of strings representing the bodies of comments,
  * replaces the old comment texts with the new given ones. */
 function setNewComments(comments) {
