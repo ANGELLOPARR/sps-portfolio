@@ -40,7 +40,6 @@ function getComments() {
   var commentsPromise = fetch('/data');
   commentsPromise.then(response => response.json())
     .then((resJson) => {
-      console.log(resJson);
       commentData = resJson;
       updateDOMComments();
     })
