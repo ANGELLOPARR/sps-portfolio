@@ -14,6 +14,39 @@
 
 var commentData = [];
 
+class Comment {
+  constructor(username, commentBody, timestamp) {
+    this._username = username;
+    this._commentBody = commentBody;
+    this._timestamp = timestamp;
+  }
+
+  get username() {
+    return this._username;
+  }
+
+  set username(newName) {
+    this._username = newName;
+  }
+
+  get commentBody() {
+    return this._commentBody;
+  }
+
+  set commentBody(newBody) {
+    this._commentBody = newBody;
+  }
+
+  get timestamp() {
+    return this._timestamp;
+  }
+
+  set timestamp(newTime) {
+    this._timestamp = newTime;
+  }
+
+}
+
 /**
  * Navigates the user to a random site that is relevant
  * to my professional life. This may include
@@ -35,23 +68,35 @@ function gotoRandomSite() {
   window.location.href = site;
 }
 
+/**
+ * Gets comments from datastore and stores them in Comment objects.
+ * Also updates the DOM with new comments.
+ */
 function getComments() {
   // Perform the fetch and store as promise
   var commentsPromise = fetch('/data');
   commentsPromise.then(response => response.json())
     .then((resJson) => {
-      commentData = resJson;
+      for (const comment of resJson) {
+        commentData.push(new Comment(comment['username'],
+                                     comment['comment'],
+                                     comment['timestamp']));
+      }
       updateDOMComments();
     })
 }
 
+/** 
+ * Extracts only the text of the comments and translates them into the
+ * desired language. This will update the commentData variable and the DOM.
+ */
 function translateComments() {
   var languageCode = document.getElementById('language').value;
   const params = new URLSearchParams();
 
   // Fill params with comments from variable
   for (const comment of commentData) {
-    params.append('comments', comment['comment']);
+    params.append('comments', comment.commentBody);
   }
   params.append('languageCode', languageCode);
 
@@ -70,8 +115,11 @@ function translateComments() {
     });
 }
 
-/** Given a list of strings representing the bodies of comments,
- * replaces the old comment texts with the new given ones. */
+/**
+ * Given a list of strings representing the bodies of comments,
+ * replaces comment bodies in the Comment classes in commentData
+ * with these new ones.
+ */
 function setNewComments(comments) {
   if (comments.length != commentData.length) {
     console.log('New comments and old comments are not of same length');
@@ -79,11 +127,12 @@ function setNewComments(comments) {
   }
 
   for (var i = 0; i < comments.length; i++) {
-    commentData[i]['comment'] = comments[i];
+    commentData[i].commentBody = comments[i];
   }
 }
 
-/** Using the commentData variable, creates and populates the DOM with
+/**
+ * Using the commentData variable, creates and populates the DOM with
  * structured HTML for comments */
 function updateDOMComments() {
   container = document.getElementById('comments-container');
@@ -124,9 +173,9 @@ function createComment(commentData) {
   commentBody.classList.add('comment-body');
 
   // Create paragraph elements for content
-  let name = createParagraphElement(commentData['username']);
-  let body = createParagraphElement(commentData['comment']);
-  let timestamp = createParagraphElement(new Date(commentData['timestamp']));
+  let name = createParagraphElement(commentData.username);
+  let body = createParagraphElement(commentData.commentBody);
+  let timestamp = createParagraphElement(new Date(commentData.timestamp));
 
   // Assemble comment contents
   commentWrapper.appendChild(commentMeta);
