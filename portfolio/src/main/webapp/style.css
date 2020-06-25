@@ -229,7 +229,7 @@ form input {
     font-family: 'Inconsolata', monospace;
 }
 
-/* Feedback section styles (comments submitted by users appear here) */
+/* Feedback section styles (comments submitted by users appear inside of this) */
 .comments-wrapper {
     width: 80%;
     margin: 2% auto 2% auto;
@@ -246,13 +246,14 @@ form input {
     font-size: 1.7em;
 }
 
+/* Translate button has special styling */
 #translate-button {
     display: inline;
-    /* border-radius: 0px; */
     padding: 4px 8px;
     background-color: rgba(var(--my-blue), 0.8);
 }
 
+/* Styles for each individual comment structure in the frontend */
 .comment {
     margin-bottom: 4%;
 }
