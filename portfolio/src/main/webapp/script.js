@@ -20,31 +20,24 @@ class Comment {
     this._commentBody = commentBody;
     this._timestamp = timestamp;
   }
-
   get username() {
     return this._username;
   }
-
   set username(newName) {
     this._username = newName;
   }
-
   get commentBody() {
     return this._commentBody;
   }
-
   set commentBody(newBody) {
     this._commentBody = newBody;
   }
-
   get timestamp() {
     return this._timestamp;
   }
-
   set timestamp(newTime) {
     this._timestamp = newTime;
   }
-
 }
 
 /**

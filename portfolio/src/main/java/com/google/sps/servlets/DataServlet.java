@@ -32,6 +32,18 @@ import java.util.ArrayList;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  private static class Comment {
+    private String username;
+    private String comment;
+    private long timestamp;
+
+    public Comment(String user, String comment, long time) {
+      this.username = user;
+      this.comment = comment;
+      this.timestamp = time;
+    }
+  }
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Arrange needed variables
@@ -88,17 +100,5 @@ public class DataServlet extends HttpServlet {
           return defaultVal;
       }
       return value;
-  }
-
-  private static class Comment {
-    private String username;
-    private String comment;
-    private long timestamp;
-
-    public Comment(String user, String comment, long time) {
-      this.username = user;
-      this.comment = comment;
-      this.timestamp = time;
-    }
   }
 }
