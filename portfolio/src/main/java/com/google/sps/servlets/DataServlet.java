@@ -32,12 +32,23 @@ import java.util.ArrayList;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  private static class Comment {
+    private String username;
+    private String commentBody;
+    private long timestamp;
+
+    public Comment(String user, String comment, long time) {
+      this.username = user;
+      this.commentBody = comment;
+      this.timestamp = time;
+    }
+  }
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Arrange needed variables
-    Gson gson = new Gson();
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    ArrayList<String> comments = new ArrayList<String>();
+    ArrayList<Comment> comments = new ArrayList<Comment>();
 
     // Query Datastore for comments
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
@@ -45,10 +56,13 @@ public class DataServlet extends HttpServlet {
 
     // Add all comments to array
     for (Entity entity : results.asIterable()) {
-      String comment = (String) entity.getProperty("body");
-      comments.add(comment);
+      Comment newComment = new Comment((String) entity.getProperty("username"),
+                                       (String) entity.getProperty("commentBody"),
+                                       (long) entity.getProperty("timestamp"));
+      comments.add(newComment);
     }
     
+    Gson gson = new Gson();
     String json = gson.toJson(comments);
     response.setContentType("application/json");
     response.getWriter().println(json);
@@ -57,6 +71,7 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Get data of comment
+    String name = getParameter(request, "username", "Anonymous");
     String newComment = getParameter(request, "comment-body", "");
     long timestamp = System.currentTimeMillis();
 
@@ -65,7 +80,8 @@ public class DataServlet extends HttpServlet {
     
     // Build commentEntity
     Entity commentEntity = new Entity("Comment");
-    commentEntity.setProperty("body", newComment);
+    commentEntity.setProperty("username", name);
+    commentEntity.setProperty("commentBody", newComment);
     commentEntity.setProperty("timestamp", timestamp);
 
     // Store in datastore
@@ -78,8 +94,8 @@ public class DataServlet extends HttpServlet {
   public String getParameter(HttpServletRequest req, String key, String defaultVal) {
       String value = req.getParameter(key);
 
-      // Protect against adding null to our comments array.
-      if (value == null) {
+      // Protect against adding null / empty input to our comments array.
+      if (value == null || value.equals("")) {
           return defaultVal;
       }
       return value;
