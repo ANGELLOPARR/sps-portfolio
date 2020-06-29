@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-var commentData = [];
+var allComments = [];
 
 class Comment {
   constructor(username, commentBody, timestamp) {
@@ -69,11 +69,10 @@ function getComments() {
   // Perform the fetch and store as promise
   var commentsPromise = fetch('/data');
   commentsPromise.then(response => response.json())
-    .then((resJson) => {
-      for (const comment of resJson) {
-        commentData.push(new Comment(comment['username'],
-                                     comment['comment'],
-                                     comment['timestamp']));
+    .then((resComments) => {
+      allComments = [];
+      for (const comment of resComments) {
+        allComments.push(Object.assign(new Comment(), comment));
       }
       updateDOMComments();
     })
@@ -81,14 +80,14 @@ function getComments() {
 
 /** 
  * Extracts only the text of the comments and translates them into the
- * desired language. This will update the commentData variable and the DOM.
+ * desired language. This will update the allComments variable and the DOM.
  */
 function translateComments() {
   var languageCode = document.getElementById('language').value;
   const params = new URLSearchParams();
 
   // Fill params with comments from variable
-  for (const comment of commentData) {
+  for (const comment of allComments) {
     params.append('comments', comment.commentBody);
   }
   params.append('languageCode', languageCode);
@@ -102,35 +101,35 @@ function translateComments() {
   });
 
   translatedComments.then(response => response.json())
-    .then(translated => {
-      setNewComments(translated);
+    .then(translatedComments => {
+      setNewCommentBodies(translatedComments);
       updateDOMComments();
     });
 }
 
 /**
  * Given a list of strings representing the bodies of comments,
- * replaces comment bodies in the Comment classes in commentData
+ * replaces comment bodies in the Comment classes in allComments
  * with these new ones.
  */
-function setNewComments(comments) {
-  if (comments.length != commentData.length) {
+function setNewCommentBodies(comments) {
+  if (comments.length != allComments.length) {
     console.log('New comments and old comments are not of same length');
     return;
   }
 
   for (var i = 0; i < comments.length; i++) {
-    commentData[i].commentBody = comments[i];
+    allComments[i].commentBody = comments[i];
   }
 }
 
 /**
- * Using the commentData variable, creates and populates the DOM with
+ * Using the allComments variable, creates and populates the DOM with
  * structured HTML for comments */
 function updateDOMComments() {
   container = document.getElementById('comments-container');
   container.innerText = '';
-  commentData.forEach(comment => {
+  allComments.forEach(comment => {
     container.appendChild(createComment(comment));
   })
 }
@@ -150,32 +149,22 @@ function createParagraphElement(text) {
 }
 
 /** Creates a combination of HTML elements representing a comment */
-function createComment(commentData) {
+function createComment(comment) {
+  // Get comment structure from HTML
+  const commentHTML = document.getElementById('comment-template').cloneNode(true);
 
-  // Create div for whole comment
-  let commentWrapper = document.createElement('div');
-  commentWrapper.classList.add('comment');
+  // Remove template-specific attributes
+  commentHTML.removeAttribute('id');
+  commentHTML.removeAttribute('hidden');
 
-  // Create div for just the metadata (name and time/date)
-  let commentMeta = document.createElement('div');
-  commentMeta.classList.add('comment-metadata');
+  // Get main containers for content
+  let metadata = commentHTML.querySelector('.comment-metadata');
+  let body = commentHTML.querySelector('.comment-body');
 
-  // Create div for body of comment (can include anything else)
-  // Allows us to add more stuff in the future
-  let commentBody = document.createElement('div');
-  commentBody.classList.add('comment-body');
+  // Add comment data
+  metadata.appendChild(createParagraphElement(comment.username));
+  metadata.appendChild(createParagraphElement(new Date(comment.timestamp)));
+  body.appendChild(createParagraphElement(comment.commentBody));
 
-  // Create paragraph elements for content
-  let name = createParagraphElement(commentData.username);
-  let body = createParagraphElement(commentData.commentBody);
-  let timestamp = createParagraphElement(new Date(commentData.timestamp));
-
-  // Assemble comment contents
-  commentWrapper.appendChild(commentMeta);
-  commentWrapper.appendChild(commentBody);
-  commentMeta.appendChild(name);
-  commentMeta.appendChild(timestamp);
-  commentBody.appendChild(body);
-  
-  return commentWrapper;
+  return commentHTML;
 }

@@ -34,12 +34,12 @@ public class DataServlet extends HttpServlet {
 
   private static class Comment {
     private String username;
-    private String comment;
+    private String commentBody;
     private long timestamp;
 
     public Comment(String user, String comment, long time) {
       this.username = user;
-      this.comment = comment;
+      this.commentBody = comment;
       this.timestamp = time;
     }
   }
@@ -57,9 +57,8 @@ public class DataServlet extends HttpServlet {
     // Add all comments to array
     for (Entity entity : results.asIterable()) {
       Comment newComment = new Comment((String) entity.getProperty("username"),
-                                       (String) entity.getProperty("body"),
+                                       (String) entity.getProperty("commentBody"),
                                        (long) entity.getProperty("timestamp"));
-      //String comment = (String) entity.getProperty("body");
       comments.add(newComment);
     }
     
@@ -82,7 +81,7 @@ public class DataServlet extends HttpServlet {
     // Build commentEntity
     Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("username", name);
-    commentEntity.setProperty("body", newComment);
+    commentEntity.setProperty("commentBody", newComment);
     commentEntity.setProperty("timestamp", timestamp);
 
     // Store in datastore
