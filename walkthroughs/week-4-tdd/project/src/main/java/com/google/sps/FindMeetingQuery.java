@@ -22,7 +22,7 @@ import java.util.Comparator;
 
 public final class FindMeetingQuery {
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
-    // Sort events by start time
+    // Sort events by start time, O(N * logN)
     List<Event> sortedEvents = new ArrayList(events);
     List<TimeRange> foundSlots = new ArrayList();
 
@@ -33,14 +33,18 @@ public final class FindMeetingQuery {
     Event nextEvent = null, currentEvent = null;
     //int[] slotRange = new int[] {TimeRange.START_OF_DAY, TimeRange.START_OF_DAY};
 
-    System.out.println("*** START HERE ***");
+    // One pass over the array O(N) complexity
     while (eventIndex < sortedEvents.size()) {
 
       nextEvent = sortedEvents.get(eventIndex);
       if (hasAttendee(request, nextEvent)) {
+
+        // Add time slot IF (end - start) allows for duration of meeting
         if (!searching) {
           currentEvent = nextEvent;
           endTime = currentEvent.getWhen().start();
+
+          // Add gap from current start time to last latest event's end time.
           if (endTime - startTime >= request.getDuration()) {
             foundSlots.add(TimeRange.fromStartEnd(startTime, endTime, false));
           }
@@ -49,26 +53,32 @@ public final class FindMeetingQuery {
           eventIndex++;
         }
         else {
+          // Find the latest end time overlapping event
           if (currentEvent.getWhen().overlaps(nextEvent.getWhen())) {
             currentEvent = findLaterEvent(currentEvent, nextEvent);
             startTime = currentEvent.getWhen().end();
             eventIndex++;
           }
+          // We have found the next event that does NOT overlap
+          // i.e. we have crossed another whole in the schedule
           else {
             searching = false;
           }
         }
 
       }
+      // Event not relevant, move forward
       else {
         eventIndex++;
       }
     }
 
+    // At the end of iterating, we consider the last event to end of day
     if (TimeRange.END_OF_DAY - startTime >= request.getDuration()) {
       foundSlots.add(TimeRange.fromStartEnd(startTime, TimeRange.END_OF_DAY, true));
     }
 
+    // Total complexity = O(N + NlogN) = O(NlogN)!!
     return foundSlots;
   }
 
